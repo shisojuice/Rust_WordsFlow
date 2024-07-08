@@ -1,0 +1,46 @@
+﻿<!doctype html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#000000" />
+  <meta name="description" content="WordsFlow" />
+  <title>WordsFlow</title>
+  <link rel="stylesheet" href="flow.css" />
+</head>
+
+<body>
+  <div id="main">
+    <img id="flowImg">
+  </div>
+  <script>
+    function getUrlParameter(name) {
+      name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+      const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+      const results = regex.exec(location.search);
+      return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+    }
+    const speed = getUrlParameter('speed');
+    const main = document.getElementById('main');
+    let scrollPosition = 0;
+    document.getElementById("flowImg").src = localStorage.getItem("img_src");
+    window.addEventListener("click", () => {
+      const image_w = document.getElementById("flowImg").offsetWidth;
+      setInterval(() => {
+        scrollPosition += Number(speed);
+        main.scrollTo({
+          top: 0,
+          left: scrollPosition
+        });
+      }, 10);
+    })
+    main.addEventListener('scroll', () => {
+      if (scrollPosition > main.scrollWidth - main.clientWidth - 5) {
+        scrollPosition = 0;
+      }
+    });
+  </script>
+</body>
+
+</html>

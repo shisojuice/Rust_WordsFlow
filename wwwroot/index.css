@@ -1,0 +1,19 @@
+body {  
+  font-family: monospace;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  gap: 5px;
+}
+button {
+  width: 100px;
+}
+input {
+  width: 250px;
+}
+#words_speed {
+  width: 50px;
+}
+#words_font {
+  width: 250px;
+}
