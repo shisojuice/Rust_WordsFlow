@@ -19,8 +19,11 @@ async function run() {
                 const speedparam = "speed=" + document.getElementById("words_speed").value;
                 localStorage.clear();
                 localStorage.setItem("img_src", ret);
-                window.open("./flow.html?" + speedparam, "_blank", "width=" + screen.width + ",height=" + screen.height);
-
+                if (!window.open("./flow.html?" + speedparam, "_blank", "width=" + screen.width + ",height=" + screen.height)){
+                    location.href = "./flow.html?" + speedparam; // ios/safari対応
+                } else {
+                    window.open("./flow.html?" + speedparam, "_blank", "width=" + screen.width + ",height=" + screen.height);
+                }
             });
     });
     document.getElementById("words_font").addEventListener("change", (event) => {
